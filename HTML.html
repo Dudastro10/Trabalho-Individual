@@ -4,9 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Livraria Online</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #f6e8ea; /* Bege claro */
+      font-family: Arial, sans-serif;
+      color: #333; /* Cor do texto */
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .header {
+      background-color: #ff4d6b; /* Rosa */
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0;
+    }
+
+    .books-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .book-card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-card img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .book-card h2 {
+      margin-top: 0;
+    }
+
+    .book-card p {
+      margin-bottom: 10px;
+    }
+
+    .buy-button {
+      background-color: #ff4d6b; /* Rosa */
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .buy-button:hover {
+      background-color: #e63c5d; /* Rosa mais escuro */
+    }
+
+    .message {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .message.success {
+      background-color: #ccffcc; /* Verde claro */
+      color: #006600;
+    }
+  </style>
 </head>
 <body>
+
   <div class="container">
 
     <header class="header">
@@ -42,13 +117,15 @@
         <label for="imagem">URL da Imagem:</label>
         <input type="url" id="imagem" name="imagem">
 
-        <button type="submit">Cadastrar Livro</button>
+        <button type="submit" class="buy-button">Cadastrar Livro</button>
       </form>
     </section>
 
     <footer>
       <p>Desenvolvido por <a href="#">Maria Eduarda</a></p>
     </footer>
+
   </div>
+
 </body>
 </html>
