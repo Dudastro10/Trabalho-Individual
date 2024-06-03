@@ -1,37 +1,47 @@
 const express = require('express');
-const fs = require('fs');
+const fs = require('fs').promises; // Usando promessas para operações de arquivo assíncronas
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware para permitir o uso de JSON nos corpos das requisições
 app.use(express.json());
 
+// Função para ler os dados do arquivo JSON
+async function lerLivros() {
+  try {
+    const data = await fs.readFile('livros.json', 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    throw new Error('Erro ao ler o arquivo de livros');
+  }
+}
+
+// Função para escrever os dados no arquivo JSON
+async function salvarLivros(livros) {
+  try {
+    await fs.writeFile('livros.json', JSON.stringify(livros, null, 2));
+  } catch (error) {
+    throw new Error('Erro ao salvar o arquivo de livros');
+  }
+}
+
 // Rota para listar todos os livros
-app.get('/books', (req, res) => {
-  fs.readFile('livros.json', 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Erro ao ler o arquivo de livros');
-      return;
-    }
-    const books = JSON.parse(data).books;
-    res.json(books);
-  });
+app.get('/books', async (req, res) => {
+  try {
+    const livros = await lerLivros();
+    res.json(livros.books);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send(error.message);
+  }
 });
 
 // Rota para comprar um livro
-app.post('/buy', (req, res) => {
+app.post('/buy', async (req, res) => {
   const { titulo } = req.body;
 
-  fs.readFile('livros.json', 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Erro ao ler o arquivo de livros');
-      return;
-    }
-
-    const livros = JSON.parse(data);
+  try {
+    let livros = await lerLivros();
     const bookIndex = livros.books.findIndex((book) => book.titulo === titulo);
 
     if (bookIndex === -1) {
@@ -41,45 +51,33 @@ app.post('/buy', (req, res) => {
 
     if (livros.books[bookIndex].exemplares > 0) {
       livros.books[bookIndex].exemplares--;
-      fs.writeFile('livros.json', JSON.stringify(livros), (err) => {
-        if (err) {
-          console.error(err);
-          res.status(500).send('Erro ao salvar o arquivo de livros');
-          return;
-        }
-        res.status(200).send('Compra realizada com sucesso');
-      });
+      await salvarLivros(livros);
+      res.status(200).send('Compra realizada com sucesso');
     } else {
       res.status(400).send('Livro fora de estoque');
     }
-  });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send(error.message);
+  }
 });
 
 // Rota para cadastrar um novo livro
-app.post('/books', (req, res) => {
+app.post('/books', async (req, res) => {
   const novoLivro = req.body;
 
-  fs.readFile('livros.json', 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Erro ao ler o arquivo de livros');
-      return;
-    }
-
-    const livros = JSON.parse(data);
+  try {
+    let livros = await lerLivros();
     livros.books.push(novoLivro);
-
-    fs.writeFile('livros.json', JSON.stringify(livros), (err) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send('Erro ao salvar o arquivo de livros');
-        return;
-      }
-      res.status(200).send('Livro cadastrado com sucesso');
-    });
-  });
+    await salvarLivros(livros);
+    res.status(200).send('Livro cadastrado com sucesso');
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send(error.message);
+  }
 });
 
+// Inicializa o servidor
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
