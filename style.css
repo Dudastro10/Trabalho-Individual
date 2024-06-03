@@ -1,0 +1,150 @@
+/* Define as cores principais */
+:root {
+  --rosa: #f7c6d9;
+  --bege: #f5f5dc;
+  --rosa-escuro: #e69aa5;
+  --bege-claro: #fffaf0;
+  --cinza: #555;
+  --branco: #fff;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bege-claro);
+  color: var(--cinza);
+  padding: 20px;
+}
+
+/* Container principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--bege);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  color: var(--rosa-escuro);
+  font-size: 2.5em;
+}
+
+/* Estilo para a lista de livros */
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.book {
+  background-color: var(--branco);
+  border: 1px solid var(--rosa-escuro);
+  border-radius: 10px;
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+}
+
+.book img {
+  max-width: 100%;
+  border-bottom: 1px solid var(--rosa-escuro);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.book h2 {
+  font-size: 1.2em;
+  color: var(--rosa-escuro);
+  margin-bottom: 10px;
+}
+
+.book p {
+  margin-bottom: 10px;
+}
+
+.book .author, .book .genre {
+  font-size: 0.9em;
+  color: var(--cinza);
+}
+
+.book .available {
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--rosa);
+}
+
+.book button {
+  background-color: var(--rosa);
+  color: var(--branco);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book button:hover {
+  background-color: var(--rosa-escuro);
+}
+
+/* Formulário de cadastro */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+form label {
+  font-weight: bold;
+  color: var(--rosa-escuro);
+}
+
+form input, form select {
+  padding: 10px;
+  border: 1px solid var(--rosa-escuro);
+  border-radius: 5px;
+}
+
+form button {
+  background-color: var(--rosa);
+  color: var(--branco);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: var(--rosa-escuro);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: var(--cinza);
+}
+
+footer a {
+  color: var(--rosa-escuro);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
