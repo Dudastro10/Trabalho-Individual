@@ -67,11 +67,6 @@ body {
   border-radius: 5px;
 }
 
-.message.error {
-  background-color: #ffcccc; /* Rosa claro */
-  color: #cc0000;
-}
-
 .message.success {
   background-color: #ccffcc; /* Verde claro */
   color: #006600;
