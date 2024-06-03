@@ -22,129 +22,105 @@ body {
   padding: 20px;
 }
 
-/* Container principal */
 .container {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: var(--bege);
-  border-radius: 10px;
+  background-color: var(--branco);
+  border: 1px solid var(--rosa-escuro);
+  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Cabeçalho */
 header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 header h1 {
   color: var(--rosa-escuro);
-  font-size: 2.5em;
 }
 
-/* Estilo para a lista de livros */
 .book-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+  margin-bottom: 20px;
 }
 
 .book {
-  background-color: var(--branco);
+  background-color: var(--bege);
   border: 1px solid var(--rosa-escuro);
-  border-radius: 10px;
-  padding: 15px;
-  width: 200px;
+  border-radius: 8px;
+  padding: 10px;
   text-align: center;
 }
 
 .book img {
   max-width: 100%;
-  border-bottom: 1px solid var(--rosa-escuro);
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  height: auto;
+  border-radius: 4px;
 }
 
 .book h2 {
-  font-size: 1.2em;
   color: var(--rosa-escuro);
-  margin-bottom: 10px;
+  font-size: 1.2em;
+  margin: 10px 0;
 }
 
-.book p {
-  margin-bottom: 10px;
-}
-
-.book .author, .book .genre {
-  font-size: 0.9em;
+.book .author, .book .genre, .book .available {
   color: var(--cinza);
-}
-
-.book .available {
-  font-size: 1em;
-  font-weight: bold;
-  color: var(--rosa);
+  margin: 5px 0;
 }
 
 .book button {
   background-color: var(--rosa);
-  color: var(--branco);
   border: none;
+  color: var(--branco);
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .book button:hover {
   background-color: var(--rosa-escuro);
 }
 
-/* Formulário de cadastro */
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-top: 40px;
 }
 
 form label {
-  font-weight: bold;
-  color: var(--rosa-escuro);
-}
-
-form input, form select {
-  padding: 10px;
-  border: 1px solid var(--rosa-escuro);
-  border-radius: 5px;
-}
-
-form button {
-  background-color: var(--rosa);
-  color: var(--branco);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-form button:hover {
-  background-color: var(--rosa-escuro);
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 0.9em;
+  margin-top: 10px;
   color: var(--cinza);
 }
 
-footer a {
-  color: var(--rosa-escuro);
-  text-decoration: none;
+form input {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid var(--rosa-escuro);
+  border-radius: 4px;
 }
 
-footer a:hover {
-  text-decoration: underline;
+form button {
+  background-color: var(--rosa-escuro);
+  border: none;
+  color: var(--branco);
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: var(--rosa);
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--cinza);
 }
