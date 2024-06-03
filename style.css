@@ -1,150 +1,78 @@
-/* Define as cores principais */
-:root {
-  --rosa: #f7c6d9;
-  --bege: #f5f5dc;
-  --rosa-escuro: #e69aa5;
-  --bege-claro: #fffaf0;
-  --cinza: #555;
-  --branco: #fff;
-}
-
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
+  background-color: #f6e8ea; /* Bege claro */
   font-family: Arial, sans-serif;
-  background-color: var(--bege-claro);
-  color: var(--cinza);
-  padding: 20px;
+  color: #333; /* Cor do texto */
 }
 
-/* Container principal */
 .container {
-  max-width: 1200px;
+  width: 80%;
   margin: 0 auto;
+}
+
+.header {
+  background-color: #ff4d6b; /* Rosa */
+  color: #fff;
   padding: 20px;
-  background-color: var(--bege);
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Cabeçalho */
-header {
   text-align: center;
-  margin-bottom: 40px;
 }
 
-header h1 {
-  color: var(--rosa-escuro);
-  font-size: 2.5em;
+.header h1 {
+  margin: 0;
 }
 
-/* Estilo para a lista de livros */
-.book-list {
-  display: flex;
-  flex-wrap: wrap;
+.books-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
 }
 
-.book {
-  background-color: var(--branco);
-  border: 1px solid var(--rosa-escuro);
-  border-radius: 10px;
-  padding: 15px;
-  width: 200px;
-  text-align: center;
+.book-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.book img {
+.book-card img {
   max-width: 100%;
-  border-bottom: 1px solid var(--rosa-escuro);
-  padding-bottom: 10px;
+  height: auto;
   margin-bottom: 10px;
 }
 
-.book h2 {
-  font-size: 1.2em;
-  color: var(--rosa-escuro);
+.book-card h2 {
+  margin-top: 0;
+}
+
+.book-card p {
   margin-bottom: 10px;
 }
 
-.book p {
-  margin-bottom: 10px;
-}
-
-.book .author, .book .genre {
-  font-size: 0.9em;
-  color: var(--cinza);
-}
-
-.book .available {
-  font-size: 1em;
-  font-weight: bold;
-  color: var(--rosa);
-}
-
-.book button {
-  background-color: var(--rosa);
-  color: var(--branco);
+.buy-button {
+  background-color: #ff4d6b; /* Rosa */
+  color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.book button:hover {
-  background-color: var(--rosa-escuro);
+.buy-button:hover {
+  background-color: #e63c5d; /* Rosa mais escuro */
 }
 
-/* Formulário de cadastro */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 40px;
-}
-
-form label {
-  font-weight: bold;
-  color: var(--rosa-escuro);
-}
-
-form input, form select {
+.message {
+  margin-top: 20px;
   padding: 10px;
-  border: 1px solid var(--rosa-escuro);
   border-radius: 5px;
 }
 
-form button {
-  background-color: var(--rosa);
-  color: var(--branco);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+.message.error {
+  background-color: #ffcccc; /* Rosa claro */
+  color: #cc0000;
 }
 
-form button:hover {
-  background-color: var(--rosa-escuro);
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 0.9em;
-  color: var(--cinza);
-}
-
-footer a {
-  color: var(--rosa-escuro);
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
+.message.success {
+  background-color: #ccffcc; /* Verde claro */
+  color: #006600;
 }
